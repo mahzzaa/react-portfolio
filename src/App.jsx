@@ -1,6 +1,6 @@
-import Home from "../src/pages/Home";
-import NotFound from "../src/pages/NotFound";
-import { BrowserRouter, Routes } from "react-router-dom";
+import { Home } from "../src/pages/Home";
+import { NotFound } from "../src/pages/NotFound";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
