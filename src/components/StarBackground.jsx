@@ -34,15 +34,15 @@ export const StarBackground = () => {
         size: Math.random() * 3 + 1,
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
-        opacity: Math.random() * 0.5 + 0.5,
-        animationDuration: Math.random() * 4 + 2,
+        opacity: Math.random() * 0.3 + 0.7, // Higher base opacity
+        animationDuration: Math.random() * 6 + 1, // More varied animation durations
       });
     }
     setStar(newStars);
   };
 
   const generateMeteors = () => {
-    const numberOfMeteors = 4;
+    const numberOfMeteors = 12; // Increased number of meteors
     const newMeteors = [];
 
     for (let i = 0; i < numberOfMeteors; i++) {
@@ -59,7 +59,7 @@ export const StarBackground = () => {
   };
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
       {star.map((star) => (
         <div
           key={star.id}
