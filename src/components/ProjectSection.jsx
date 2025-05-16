@@ -8,7 +8,7 @@ const projects = [
     name: "The Birb Nest",
     description:
       "A sleek platform for 'TheBirbNest' crypto community, offering resources, insights, and tools. Built with Svelte, SvelteKit, Tailwind CSS, and Skeleton.",
-    image: "../../public/theBirbNest.png",
+    image: "/theBirbNest.png",
     tags: ["Svelte", "SvelteKit", "Tailwind CSS", "Skeleton"],
     githubUrl: "",
     demoUrl: "https://www.thebirbnest.com/",
@@ -19,7 +19,7 @@ const projects = [
     name: "Apple Store",
     description:
       "An immersive Apple product showcase with smooth 3D interactions and animations. Developed with React, Three.js, Tailwind CSS, and GSAP.",
-    image: "../../public/apple.png",
+    image: "/apple.png",
     tags: ["React", "Three.js", "Tailwind CSS", "GSAP"],
     githubUrl: "https://github.com/mahzzaa/apple-website",
     demoUrl: "https://apple-website-kappa-ten.vercel.app/",
@@ -31,7 +31,7 @@ const projects = [
     description:
       "A modern platform to browse, rent, and buy houses, villas, and apartments. Built with HTML, CSS, JavaScript, and animations.",
 
-    image: "../../public/architecture.png",
+    image: "/architecture.png",
     tags: ["HTML", "CSS", "JavaScript", "Animation"],
     githubUrl: "https://github.com/mahzzaa/architecture",
     demoUrl: "https://architecture-olive.vercel.app/",
@@ -43,7 +43,7 @@ const projects = [
     name: "School Website",
     description:
       "An informative school website for students and families to access news, schedules, and teacher profiles. Created with HTML, CSS, and JavaScript.",
-    image: "../../public/education.png",
+    image: "/education.png",
     tags: ["HTML", "CSS", "JavaScript", "Animation"],
     githubUrl: "https://github.com/mahzzaa/educationWebsite",
     demoUrl: "https://education-website-gules.vercel.app/",
@@ -54,7 +54,7 @@ const projects = [
     name: "Two Robots",
     description:
       "A clean and responsive website for the 'Two Robots' startup, designed with HTML, CSS, Tailwind CSS, and JavaScript.",
-    image: "../../public/robots.png",
+    image: "/robots.png",
     tags: ["HTML", "CSS", "Tailwind CSS", "JavaScript"],
     githubUrl: "https://github.com/mahzzaa/twoRobots",
     demoUrl: "https://two-robots.vercel.app/",
