@@ -251,7 +251,7 @@ export const SkillsSection = () => {
         {/* Floating tooltip that follows mouse position */}
         {tooltipInfo.visible && (
           <div
-            className="fixed z-50 px-4 py-3 text-sm font-medium border rounded-lg shadow-lg pointer-events-none bg-card/90 backdrop-blur-sm border-primary/30 text-foreground"
+            className="fixed z-50 px-4 py-3 text-sm font-medium border rounded-lg shadow-lg pointer-events-none bg-card/60 backdrop-blur-sm border-primary/30 text-foreground"
             style={{
               left: `${tooltipInfo.x}px`,
               top: `${tooltipInfo.y}px`,
