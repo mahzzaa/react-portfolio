@@ -31,21 +31,21 @@ export const Navbar = () => {
         isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
       )}
     >
-      <div className="container mx-auto flex justify-between items-center ">
+      <div className="container flex items-center justify-between mx-auto ">
         <a
-          className="text-xl font-bold text-primary flex items-center"
+          className="flex items-center text-xl font-bold text-primary"
           href="#hero"
         >
           <span className="relative z-10 `">
             <span className="text-2xl text-foreground text-glow">My</span> {""}
-            <span className="text-2xl text-accent font-bold">Portfolio</span>
+            <span className="text-2xl font-bold text-accent">Portfolio</span>
           </span>
         </a>
         {/* desktop nav */}
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden space-x-8 md:flex">
           {navItems.map((item) => (
             <a
-              className="text-foreground/80 hover:text-primary transition-colors duration-300"
+              className="transition-colors duration-300 text-foreground/80 hover:text-primary"
               key={item.name}
               href={item.href}
             >
@@ -55,7 +55,7 @@ export const Navbar = () => {
         </div>
         {/* mobile nav */}
         <button
-          className="md:hidden flex items-center justify-center p-2 rounded-md text-foreground/80 hover:text-primary transition-colors duration-300"
+          className="flex items-center justify-center p-2 transition-colors duration-300 rounded-md md:hidden text-foreground/80 hover:text-primary"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -70,16 +70,17 @@ export const Navbar = () => {
           )}
         >
           <button
-            className="absolute top-5 right-5 p-2 rounded-md text-foreground/80 hover:text-primary transition-colors duration-300"
+            className="absolute p-2 transition-colors duration-300 rounded-md top-5 right-5 text-foreground/80 hover:text-primary"
             onClick={() => setIsMenuOpen(false)}
           >
             <X size={24} />
           </button>
+          <ThemeToggle />
 
           <div className="flex flex-col space-y-8 text-xl">
             {navItems.map((item) => (
               <a
-                className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                className="transition-colors duration-300 text-foreground/80 hover:text-primary"
                 key={item.name}
                 href={item.href}
                 onClick={() => setIsMenuOpen(false)}

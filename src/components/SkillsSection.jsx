@@ -6,24 +6,24 @@ const skills = [
   // svelte , skeleton, lucide icons ,
 
   //   vue.js
-  { name: "Vue.js", level: 80, category: "frontend" },
+  { name: "Vue.js", level: 60, category: "frontend" },
   // { name: "Nuxt.js", level: 80, category: "frontend" },
   // { name: "Vite", level: 80, category: "frontend" },
   //
-  { name: "Svelte", level: 80, category: "frontend" },
-  { name: "SvelteKit", level: 80, category: "frontend" },
-  { name: "Skeleton", level: 80, category: "frontend" },
-  { name: "Tailwind CSS", level: 80, category: "frontend" },
-  { name: "HTML", level: 90, category: "frontend" },
-  { name: "CSS", level: 85, category: "frontend" },
-  { name: "JavaScript", level: 80, category: "frontend" },
+  { name: "Svelte", level: 99, category: "frontend" },
+  { name: "SvelteKit", level: 99, category: "frontend" },
+  { name: "Skeleton", level: 100, category: "frontend" },
+  { name: "Tailwind CSS", level: 100, category: "frontend" },
+  { name: "HTML", level: 100, category: "frontend" },
+  { name: "CSS", level: 100, category: "frontend" },
+  { name: "JavaScript", level: 90, category: "frontend" },
   { name: "React", level: 75, category: "frontend" },
   // {name: "Next.js", level: 70, category: "frontend" },
-  { name: "Bootstrap", level: 70, category: "frontend" },
-  { name: "Sass", level: 70, category: "frontend" },
-  { name: "TypeScript", level: 75, category: "frontend" },
+  { name: "Bootstrap", level: 100, category: "frontend" },
+  { name: "Sass", level: 95, category: "frontend" },
+  { name: "TypeScript", level: 85, category: "frontend" },
   // animated CSS
-  { name: "GSAP", level: 70, category: "frontend" },
+  { name: "GSAP", level: 90, category: "frontend" },
   { name: "Three.js", level: 70, category: "frontend" },
 
   // backend
@@ -34,9 +34,9 @@ const skills = [
   { name: "REST API", level: 80, category: "backend" },
 
   // tools
-  { name: "Git", level: 80, category: "tools" },
-  { name: "GitHub", level: 80, category: "tools" },
-  { name: "Figma", level: 70, category: "tools" },
+  { name: "Git", level: 90, category: "tools" },
+  { name: "GitHub", level: 100, category: "tools" },
+  { name: "Figma", level: 90, category: "tools" },
   // tools for design ui/ux
   // {name: "Adobe XD", level: 70, category: "tools" },
   // {name: "Adobe Illustrator", level: 70, category: "tools" },
@@ -51,11 +51,11 @@ const skills = [
   // {name: "Photoshop", level: 70, category: "tools" },
   // {name: "Illustrator", level: 70, category: "tools" },
   // {name: "Canva", level: 70, category: "tools" },
-  { name: "Procreate", level: 70, category: "tools" },
+  { name: "Procreate", level: 100, category: "tools" },
   { name: "Aseprite", level: 70, category: "tools" },
   { name: "GIMP", level: 70, category: "tools" },
   // 3d design
-  { name: "Blender", level: 70, category: "tools" },
+  { name: "Blender", level: 60, category: "tools" },
   // {name: "Unity", level: 70, category: "tools" },
 ];
 
@@ -68,7 +68,7 @@ const categories = [
 
 export const SkillsSection = () => {
   // activeCategory useState
-  const [activeCategory, setActiveCategory] = useState("all");
+  const [activeCategory, setActiveCategory] = useState("frontend");
 
   // vue.js
   //  { name: "Vue.js", level: 80, category: "frontend" },
@@ -108,8 +108,8 @@ export const SkillsSection = () => {
               className={cn(
                 "px-5 py-2 rounded-full text-sm capitalize transition-transform duration-300",
                 activeCategory === category.value
-                  ? "bg-primary text-primary-foreground scale-105"
-                  : "bg-gray-800/30 backdrop-blur-md text-gray-300 hover:bg-gray-700 hover:text-white"
+                  ? "bg-primary text-black dark:text-primary-foreground scale-105"
+                  : "bg-gray-800/30 backdrop-blur-md ttext-gray-300 hover:bg-gray-700 hover:text-white"
               )}
               onClick={() => handleCategoryChange(category.value)}
             >
@@ -147,11 +147,11 @@ export const SkillsSection = () => {
                   >
                     {skill.level}%
                     <span
-                      className="absolute left-1/2 -bottom-2.5 -translate-x-1/2 w-0 h-0"
+                      className="absolute left-1/2 -bottom-2.5 -translate-x-1/2 w-0 h-0 dark:[--tooltip-color:#9282cb]"
                       style={{
                         borderLeft: "8px solid transparent",
                         borderRight: "8px solid transparent",
-                        borderTop: "8px solid #9282cb", // match bg-primary
+                        borderTop: "8px solid var(--tooltip-color, #d1d5db)", // light gray in light mode
                         content: '""',
                         display: "block",
                       }}

@@ -8,12 +8,12 @@ export const ContactSection = () => {
   const [formStatus, setFormStatus] = useState({
     submitting: false,
     submitted: false,
-    error: null
+    error: null,
   });
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    message: ""
+    message: "",
   });
 
   const handleCopyEmail = (event) => {
@@ -29,7 +29,7 @@ export const ContactSection = () => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -44,22 +44,22 @@ export const ContactSection = () => {
         ...formData,
         _replyto: formData.email, // This ensures replies go to the sender
         _subject: `Portfolio Contact from ${formData.name}`,
-        email: "moonlike965@gmail.com" // Set this as the destination email
+        email: "moonlike965@gmail.com", // Set this as the destination email
       };
-      
+
       const response = await fetch("https://formspree.io/f/xjvowzqk", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(dataWithRecipient)
+        body: JSON.stringify(dataWithRecipient),
       });
 
       if (response.ok) {
         setFormStatus({
           submitting: false,
           submitted: true,
-          error: null
+          error: null,
         });
         // Reset form after successful submission
         setFormData({ name: "", email: "", message: "" });
@@ -68,7 +68,7 @@ export const ContactSection = () => {
           setFormStatus({
             submitting: false,
             submitted: false,
-            error: null
+            error: null,
           });
         }, 5000);
       } else {
@@ -79,7 +79,7 @@ export const ContactSection = () => {
       setFormStatus({
         submitting: false,
         submitted: false,
-        error: error.message || "Something went wrong. Please try again."
+        error: error.message || "Something went wrong. Please try again.",
       });
     }
   };
@@ -103,7 +103,7 @@ export const ContactSection = () => {
             </h3>
             <div className="flex flex-col items-start justify-start w-full mt-4 space-y-6 ">
               {/* Email */}
-              <div className="flex items-start justify-center w-full space-x-20">
+              <div className="flex items-start justify-start w-full space-x-20">
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10">
                   <Mail className="w-6 h-6 text-primary" />
                 </div>
@@ -137,7 +137,7 @@ export const ContactSection = () => {
                 </div>
               </div>
               {/* Twitter */}
-              <div className="flex items-center justify-center w-full space-x-20">
+              <div className="flex items-center justify-start w-full space-x-20">
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10">
                   <Twitter className="w-6 h-6 text-primary" />
                 </div>
@@ -156,7 +156,7 @@ export const ContactSection = () => {
                 </div>
               </div>
               {/* LinkedIn */}
-              <div className="flex items-center justify-center w-full space-x-20">
+              <div className="flex items-center justify-start w-full space-x-20">
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10">
                   <Linkedin className="w-6 h-6 text-primary" />
                 </div>
@@ -189,22 +189,25 @@ export const ContactSection = () => {
               {formStatus.submitted ? (
                 <div className="flex flex-col items-center justify-center w-full max-w-md p-4 space-y-4 text-center">
                   <div className="p-3 rounded-full bg-primary/20">
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      className="w-8 h-8 text-primary" 
-                      viewBox="0 0 20 20" 
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-8 h-8 text-primary"
+                      viewBox="0 0 20 20"
                       fill="currentColor"
                     >
-                      <path 
-                        fillRule="evenodd" 
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" 
-                        clipRule="evenodd" 
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
                       />
                     </svg>
                   </div>
-                  <h4 className="text-xl font-semibold text-primary">Message Sent!</h4>
+                  <h4 className="text-xl font-semibold text-primary">
+                    Message Sent!
+                  </h4>
                   <p className="text-muted-foreground">
-                    Thank you for reaching out. I'll get back to you as soon as possible.
+                    Thank you for reaching out. I'll get back to you as soon as
+                    possible.
                   </p>
                 </div>
               ) : (
@@ -213,7 +216,11 @@ export const ContactSection = () => {
                   className="flex flex-col w-full max-w-md space-y-4"
                 >
                   {/* Hidden field to specify the destination email */}
-                  <input type="hidden" name="_to" value="moonlike965@gmail.com" />
+                  <input
+                    type="hidden"
+                    name="_to"
+                    value="moonlike965@gmail.com"
+                  />
                   <input
                     type="text"
                     name="name"
@@ -221,7 +228,7 @@ export const ContactSection = () => {
                     required
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="p-2 transition-colors duration-200 border rounded-md bg-secondary/20 border-primary/20 focus:outline-none focus:ring-2 focus:ring-primary/50 hover:border-primary hover:bg-primary/10"
+                    className="p-2 transition-colors duration-200 border rounded-md backdrop-blur-md bg-secondary/20 border-primary/20 focus:outline-none focus:ring-2 focus:ring-primary/50 hover:border-primary hover:bg-primary/10"
                   />
                   <input
                     type="email"
@@ -230,7 +237,7 @@ export const ContactSection = () => {
                     required
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="p-2 transition-colors duration-200 border rounded-md bg-secondary/20 border-primary/20 focus:outline-none focus:ring-2 focus:ring-primary/50 hover:border-primary hover:bg-primary/10"
+                    className="p-2 transition-colors duration-200 border rounded-md backdrop-blur-md bg-secondary/20 border-primary/20 focus:outline-none focus:ring-2 focus:ring-primary/50 hover:border-primary hover:bg-primary/10"
                   />
                   <textarea
                     name="message"
@@ -239,20 +246,22 @@ export const ContactSection = () => {
                     required
                     value={formData.message}
                     onChange={handleInputChange}
-                    className="p-2 transition-colors duration-200 border rounded-md bg-secondary/20 border-primary/20 focus:outline-none focus:ring-2 focus:ring-primary/50 hover:border-primary hover:bg-primary/10"
+                    className="p-2 transition-colors duration-200 border rounded-md backdrop-blur-md bg-secondary/20 border-primary/20 focus:outline-none focus:ring-2 focus:ring-primary/50 hover:border-primary hover:bg-primary/10"
                   ></textarea>
-                  
+
                   {formStatus.error && (
                     <div className="px-4 py-2 text-sm text-red-800 bg-red-100 border border-red-200 rounded-md">
                       {formStatus.error}
                     </div>
                   )}
-                  
+
                   <button
                     type="submit"
                     disabled={formStatus.submitting}
                     className={`px-4 py-2 font-semibold transition duration-300 ease-in-out cosmic-button ${
-                      formStatus.submitting ? "opacity-70 cursor-not-allowed" : ""
+                      formStatus.submitting
+                        ? "opacity-70 cursor-not-allowed"
+                        : ""
                     }`}
                   >
                     {formStatus.submitting ? "Sending..." : "Send Message"}

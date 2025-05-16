@@ -2,12 +2,23 @@ import { ArrowRight, ExternalLink, GithubIcon } from "lucide-react";
 
 const projects = [
   // id, title,description,image ,tags[what it made with], github url, demo url
-
+  // a website for a vryptocurrency commiunity which name is "TheBirbNest" made by svelte , sveltekit , tailwindcss ,skeleton
+  {
+    id: 0,
+    name: "The Birb Nest",
+    description:
+      "A sleek platform for 'TheBirbNest' crypto community, offering resources, insights, and tools. Built with Svelte, SvelteKit, Tailwind CSS, and Skeleton.",
+    image: "../../public/theBirbNest.png",
+    tags: ["Svelte", "SvelteKit", "Tailwind CSS", "Skeleton"],
+    githubUrl: "",
+    demoUrl: "https://www.thebirbnest.com/",
+  },
   {
     // apple selling phone website, made with react , three js , tailwind css , gsap
     id: 1,
     name: "Apple Store",
-    description: "A website for selling Apple products.",
+    description:
+      "An immersive Apple product showcase with smooth 3D interactions and animations. Developed with React, Three.js, Tailwind CSS, and GSAP.",
     image: "../../public/apple.png",
     tags: ["React", "Three.js", "Tailwind CSS", "GSAP"],
     githubUrl: "https://github.com/mahzzaa/apple-website",
@@ -18,7 +29,8 @@ const projects = [
     id: 2,
     name: "Real Estate",
     description:
-      "A website for renting and buying houses, villas, and apartments.",
+      "A modern platform to browse, rent, and buy houses, villas, and apartments. Built with HTML, CSS, JavaScript, and animations.",
+
     image: "../../public/architecture.png",
     tags: ["HTML", "CSS", "JavaScript", "Animation"],
     githubUrl: "https://github.com/mahzzaa/architecture",
@@ -30,7 +42,7 @@ const projects = [
     id: 3,
     name: "School Website",
     description:
-      "An education website for students and their family to get information about their school and teachers.",
+      "An informative school website for students and families to access news, schedules, and teacher profiles. Created with HTML, CSS, and JavaScript.",
     image: "../../public/education.png",
     tags: ["HTML", "CSS", "JavaScript", "Animation"],
     githubUrl: "https://github.com/mahzzaa/educationWebsite",
@@ -40,7 +52,8 @@ const projects = [
     //  a website for an startup company named"two Robots" made by html , css, tailwindcss , javascript
     id: 4,
     name: "Two Robots",
-    description: "A website for a startup company named 'Two Robots'.",
+    description:
+      "A clean and responsive website for the 'Two Robots' startup, designed with HTML, CSS, Tailwind CSS, and JavaScript.",
     image: "../../public/robots.png",
     tags: ["HTML", "CSS", "Tailwind CSS", "JavaScript"],
     githubUrl: "https://github.com/mahzzaa/twoRobots",
@@ -86,28 +99,38 @@ export const ProjectSection = () => {
                   ))}
                 </div>
                 <h3 className="mb-1 text-xl font-semibold">{project.name}</h3>
-                <p className="h-16 mb-4 text-sm text-muted-foreground">
+                <p className="h-16 mb-10 text-xs text-muted-foreground">
                   {project.description}
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex justify-between w-full space-x-3 ">
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block px-4 py-2 mr-2 text-sm font-semibold rounded text-foreground bg-primary/40 hover:bg-primary/80"
-                    >
-                      <GithubIcon className="inline-block w-4 h-4 mr-1" />
-                      GitHub
-                    </a>
+                    {project.githubUrl ? (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center px-4 py-2 mr-2 text-sm font-semibold rounded text-foreground bg-primary/40 hover:bg-primary/80"
+                      >
+                        <GithubIcon className="inline-block w-4 h-4 mr-1" />
+                        <p>GitHub</p>{" "}
+                      </a>
+                    ) : (
+                      <button
+                        disabled
+                        className="flex items-center justify-center px-4 py-2 mr-2 text-sm font-semibold rounded cursor-not-allowed text-foreground/50 bg-primary/40 opacity-80"
+                      >
+                        <GithubIcon className="inline-block w-4 h-4 mr-1" />
+                        <p>GitHub</p>{" "}
+                      </button>
+                    )}
                     <a
                       href={project.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block px-4 py-2 text-sm font-semibold rounded text-foreground bg-primary/40 hover:bg-primary/80"
+                      className="flex items-center justify-center px-4 py-2 text-sm font-semibold rounded text-foreground bg-primary/40 hover:bg-primary/80"
                     >
                       <ExternalLink className="inline-block w-4 h-4 mr-1" />
-                      Live Demo
+                      <p>Live Preview</p>{" "}
                     </a>
                   </div>
                 </div>
