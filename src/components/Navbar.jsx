@@ -13,9 +13,27 @@ const navItems = [
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
+
+      // Check which section is currently in view
+      const sections = navItems.map((item) => item.href.substring(1));
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // If the section is in the viewport (with some offset)
+          const offset = 100; // Adjust this value as needed
+          if (rect.top <= offset && rect.bottom >= offset) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -24,6 +42,7 @@ export const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   return (
     <nav
       className={cn(
@@ -34,7 +53,7 @@ export const Navbar = () => {
       <div className="container flex items-center justify-between mx-auto ">
         <a
           className="flex items-center text-xl font-bold text-primary"
-          href="#hero"
+          href="#home"
         >
           <span className="relative z-10 `">
             <span className="text-2xl text-foreground text-glow">My</span> {""}
@@ -45,7 +64,12 @@ export const Navbar = () => {
         <div className="hidden space-x-8 md:flex">
           {navItems.map((item) => (
             <a
-              className="transition-colors duration-300 text-foreground/80 hover:text-primary"
+              className={cn(
+                "transition-colors duration-300 hover:text-primary",
+                activeSection === item.href.substring(1)
+                  ? "text-primary font-bold text-glow"
+                  : "text-foreground/80"
+              )}
               key={item.name}
               href={item.href}
             >
@@ -80,7 +104,12 @@ export const Navbar = () => {
           <div className="flex flex-col space-y-8 text-xl">
             {navItems.map((item) => (
               <a
-                className="transition-colors duration-300 text-foreground/80 hover:text-primary"
+                className={cn(
+                  "transition-colors duration-300 hover:text-primary",
+                  activeSection === item.href.substring(1)
+                    ? "text-primary font-bold text-glow"
+                    : "text-foreground/80"
+                )}
                 key={item.name}
                 href={item.href}
                 onClick={() => setIsMenuOpen(false)}

@@ -3,30 +3,30 @@ import { ArrowDown } from "lucide-react";
 export const HeroSection = () => {
   return (
     <section
-      id="Hero"
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 hover:cursor-default select-none"
+      id="home"
+      className="relative flex flex-col items-center justify-center min-h-screen px-4 select-none hover:cursor-default"
     >
-      <div className="container max-w-4xl mx-auto text-center z-10">
+      <div className="container z-10 max-w-4xl mx-auto text-center">
         <div>
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight ">
-            <span className="opacity-0 text-primary animate-fade-in-delay-1 transition-opacity duration-1000">
+          <h1 className="text-4xl font-bold tracking-tight md:text-6xl ">
+            <span className="transition-opacity duration-1000 opacity-0 text-primary animate-fade-in-delay-1">
               Hello, I'm
             </span>{" "}
-            <span className="text-accent opacity-0 text-glow animate-fade-in-delay-2 transition-opacity duration-1000">
+            <span className="transition-opacity duration-1000 opacity-0 text-accent text-glow animate-fade-in-delay-2">
               Moon
             </span>{" "}
-            <span className="text-accent opacity-0 animate-fade-in-delay-3 text-primary transition-opacity duration-1000">
+            <span className="transition-opacity duration-1000 opacity-0 text-accent animate-fade-in-delay-3 text-primary">
               like
             </span>
           </h1>
-          <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in-delay-4 transition-opacity duration-1000">
+          <p className="max-w-2xl mx-auto mt-4 text-lg transition-opacity duration-1000 opacity-0 md:text-xl text-muted-foreground animate-fade-in-delay-4">
             I'm a <span className="text-accent">Full-stack web developer</span>{" "}
             based in <span className="text-accent">Turkey</span>.
             <br />I specialize in creating beautiful and functional web
             applications
           </p>
 
-          <div className="opacity-0 animate-fade-in-delay-4 pt-8">
+          <div className="pt-8 opacity-0 animate-fade-in-delay-4">
             <a className=" cosmic-button" href="#projects">
               View my work
             </a>
@@ -34,9 +34,9 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
-        <span className="text-sm text-foreground mb-1 ">Scroll</span>
-        <ArrowDown className="h-6 w-6 text-accent text-primary" />
+      <div className="absolute flex flex-col items-center transform -translate-x-1/2 bottom-8 left-1/2 animate-bounce">
+        <span className="mb-1 text-sm text-foreground ">Scroll</span>
+        <ArrowDown className="w-6 h-6 text-accent text-primary" />
       </div>
     </section>
   );

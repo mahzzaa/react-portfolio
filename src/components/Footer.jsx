@@ -11,7 +11,7 @@ export const Footer = () => {
       </div>
 
       <div className="absolute bottom-1/3 right-4">
-        <a href="#Hero">
+        <a href="#home">
           <ArrowUp className="text-sm text-glow animate-bounce" />
         </a>
       </div>
