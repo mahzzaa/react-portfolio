@@ -76,15 +76,15 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
+    --background: 210 59% 68%;
     --foreground: 222 47% 11%;
 
-    --card: 0 0% 100%;
+    --card: 210 45% 75%;
 
-    --primary: 250 47% 60%;
+    --primary: 220 70% 30%;
     --primary-foreground: 210 40% 98%;
 
-    --border: 214 32% 91%;
+    --border: 214 50% 60%;
   }
 
   .dark {
@@ -152,17 +152,36 @@
 
 @utility cosmic-button {
   @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium 
-         transition-all duration-300 hover:shadow-[0_0_10px_rgba(139,92,246,0.5)]
+         transition-all duration-300 hover:shadow-[0_0_10px_rgba(29,41,81,0.5)]
          hover:scale-105 active:scale-95;
 }
 
 @utility star {
-  @apply absolute rounded-full bg-white;
+  @apply absolute rounded-full;
+  background-color: rgb(254, 240, 138); /* Light yellow in light mode */
+  box-shadow: 0 0 10px 2px rgba(254, 240, 138, 0.5);
+}
+
+/* Dark mode stars */
+.dark .star {
+  background-color: white;
   box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
 }
 
 @utility meteor {
-  @apply absolute bg-linear-to-r from-white via-white to-transparent rounded-full;
+  @apply absolute rounded-full;
+  background: linear-gradient(
+    to right,
+    rgb(254, 240, 138),
+    rgb(254, 240, 138),
+    transparent
+  );
+  box-shadow: 0 0 10px 5px rgba(254, 240, 138, 0.4);
+}
+
+/* Dark mode meteors */
+.dark .meteor {
+  background: linear-gradient(to right, white, white, transparent);
   box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
 }
 

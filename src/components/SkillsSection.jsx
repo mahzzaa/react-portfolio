@@ -187,7 +187,7 @@ export const SkillsSection = () => {
               className={cn(
                 "px-5 py-2 rounded-full text-sm capitalize transition-transform duration-300",
                 activeCategory === category.value
-                  ? "bg-primary text-black dark:text-primary-foreground scale-105"
+                  ? "bg-primary text-primary-foreground scale-105"
                   : "bg-gray-800/30 backdrop-blur-md ttext-gray-300 hover:bg-gray-700 hover:text-white"
               )}
               onClick={() => handleCategoryChange(category.value)}

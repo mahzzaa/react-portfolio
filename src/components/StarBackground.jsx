@@ -6,8 +6,13 @@ import React, { useEffect, useState } from "react";
 export const StarBackground = () => {
   const [star, setStar] = useState([]);
   const [meteor, setMeteor] = useState([]);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
+    // Check initial dark mode status
+    const isDark = document.documentElement.classList.contains("dark");
+    setIsDarkMode(isDark);
+
     generateStars();
     generateMeteors();
 
@@ -15,10 +20,26 @@ export const StarBackground = () => {
       generateStars();
     };
 
+    // Listen for theme changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === "class") {
+          const isDark = document.documentElement.classList.contains("dark");
+          setIsDarkMode(isDark);
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
     window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      observer.disconnect();
     };
   }, []);
 
@@ -42,7 +63,7 @@ export const StarBackground = () => {
   };
 
   const generateMeteors = () => {
-    const numberOfMeteors = 12; // Increased number of meteors
+    const numberOfMeteors = 7; // Increased number of meteors
     const newMeteors = [];
 
     for (let i = 0; i < numberOfMeteors; i++) {
