@@ -1,4 +1,5 @@
 import { ArrowRight, ExternalLink, GithubIcon } from "lucide-react";
+import { trackProjectView, trackEvent } from "../lib/analytics";
 
 const projects = [
   // id, title,description,image ,tags[what it made with], github url, demo url
@@ -77,6 +78,7 @@ export const ProjectSection = () => {
             <div
               key={project.id}
               className="p-4 overflow-hidden rounded-lg shadow-xs card-hover bg-card/50 backdrop-blur-lg group "
+              onMouseEnter={() => trackProjectView(project.name)}
             >
               <div className="relative w-full h-48 overflow-hidden transition-shadow duration-500 rounded-md shadow-lg group-hover:shadow-xl">
                 <div className="absolute inset-0 transition-opacity duration-500 opacity-0 bg-gradient-to-t from-black/50 to-transparent group-hover:opacity-100"></div>
@@ -110,6 +112,11 @@ export const ProjectSection = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center justify-center px-4 py-2 mr-2 text-sm font-semibold rounded text-foreground bg-primary/40 hover:bg-primary/80"
+                        onClick={() =>
+                          trackEvent("project_github_click", {
+                            project: project.name,
+                          })
+                        }
                       >
                         <GithubIcon className="inline-block w-4 h-4 mr-1" />
                         <p>GitHub</p>{" "}
@@ -128,6 +135,11 @@ export const ProjectSection = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center px-4 py-2 text-sm font-semibold rounded text-foreground bg-primary/40 hover:bg-primary/80"
+                      onClick={() =>
+                        trackEvent("project_demo_click", {
+                          project: project.name,
+                        })
+                      }
                     >
                       <ExternalLink className="inline-block w-4 h-4 mr-1" />
                       <p>Live Preview</p>{" "}
@@ -145,6 +157,7 @@ export const ProjectSection = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 mx-auto cosmic-button w-fit"
+            onClick={() => trackEvent("profile_github_click")}
           >
             Check out my GitHub{" "}
             <ArrowRight className="inline-block w-4 h-4 ml-2" />

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "../lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
+import { trackSectionView, trackEvent } from "../lib/analytics";
+
 const navItems = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
@@ -30,6 +32,7 @@ export const Navbar = () => {
           const offset = 100; // Adjust this value as needed
           if (rect.top <= offset && rect.bottom >= offset) {
             setActiveSection(section);
+            trackSectionView(section); // Track section view
             break;
           }
         }
@@ -72,6 +75,7 @@ export const Navbar = () => {
               )}
               key={item.name}
               href={item.href}
+              onClick={() => trackEvent("nav_click", { section: item.name })}
             >
               {item.name}
             </a>
@@ -112,7 +116,10 @@ export const Navbar = () => {
                 )}
                 key={item.name}
                 href={item.href}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  trackEvent("nav_click_mobile", { section: item.name });
+                }}
               >
                 {item.name}
               </a>

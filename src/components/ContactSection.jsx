@@ -1,5 +1,6 @@
 import { Instagram, Linkedin, Mail, PhoneCall, Twitter } from "lucide-react";
 import { useState } from "react";
+import { trackEvent } from "../lib/analytics";
 
 export const ContactSection = () => {
   const [showTooltip, setShowTooltip] = useState(false);
@@ -56,6 +57,8 @@ export const ContactSection = () => {
       });
 
       if (response.ok) {
+        // Track successful form submission
+        trackEvent("contact_form_submit", { success: true });
         setFormStatus({
           submitting: false,
           submitted: true,
