@@ -1,5 +1,47 @@
 import { useState } from "react";
 import { cn } from "../lib/utils";
+
+// Skill descriptions for tooltips
+const skillDescriptions = {
+  "Vue.js": "A progressive JavaScript framework for building user interfaces.",
+  Svelte:
+    "A compiler that builds fast, minimal web apps with no runtime overhead.",
+  SvelteKit:
+    "A full-stack framework for building web applications with Svelte.",
+  Skeleton:
+    "A UI toolkit combining Svelte and Tailwind CSS for modern web design.",
+  "Tailwind CSS":
+    "A utility-first CSS framework for rapidly building custom user interfaces.",
+  HTML: "The standard markup language for structuring web content.",
+  CSS: "A style sheet language for describing the presentation of web documents.",
+  JavaScript:
+    "A programming language that enables dynamic and interactive web pages.",
+  React: "A JavaScript library for building interactive user interfaces.",
+  Bootstrap:
+    "A popular CSS framework for building responsive and mobile-first websites.",
+  Sass: "A CSS preprocessor that adds variables, nesting, and other features to CSS.",
+  TypeScript:
+    "A superset of JavaScript that adds static typing for better tooling and scalability.",
+  GSAP: "A high-performance JavaScript library for creating advanced animations.",
+  "Three.js":
+    "A JavaScript library for creating and displaying 3D graphics in the browser.",
+  PostgreSQL:
+    "A powerful open-source relational database system with advanced features.",
+  MySQL: "A widely-used open-source relational database management system.",
+  GraphQL:
+    "A query language and runtime for APIs, enabling flexible data fetching.",
+  "REST API":
+    "An architectural style for building web services based on HTTP requests.",
+  Git: "A distributed version control system for tracking and managing source code changes.",
+  GitHub: "A platform for hosting and collaborating on Git repositories.",
+  Figma: "A cloud-based collaborative design tool for UI and UX design.",
+  Procreate: "A professional digital illustration and painting app for iPad.",
+  Aseprite: "A pixel art editor for creating 2D sprites and animations.",
+  GIMP: "A free and open-source image editor for photo retouching and graphics creation.",
+  Blender:
+    "An open-source 3D creation suite for modeling, animation, rendering, and more.",
+};
+
 const skills = [
   // name , level/number based from 100 , category
   // frontend
@@ -69,13 +111,16 @@ const categories = [
 export const SkillsSection = () => {
   // activeCategory useState
   const [activeCategory, setActiveCategory] = useState("frontend");
-
-  // vue.js
-  //  { name: "Vue.js", level: 80, category: "frontend" },
-  // { name: "Nuxt.js", level: 80, category: "frontend" },
-  // { name: "Vite", level: 80, category: "frontend" },
   const [isTransitioning, setIsTransitioning] = useState(false);
-  //
+
+  // Tooltip state
+  const [tooltipInfo, setTooltipInfo] = useState({
+    visible: false,
+    content: "",
+    x: 0,
+    y: 0,
+  });
+
   const handleCategoryChange = (category) => {
     if (category !== activeCategory) {
       setIsTransitioning(true);
@@ -84,6 +129,40 @@ export const SkillsSection = () => {
         setIsTransitioning(false);
       }, 300); // Match the animation duration
     }
+  };
+
+  // Tooltip handlers
+  const showTooltip = (e, skillName) => {
+    const description =
+      skillDescriptions[skillName] || `Details about ${skillName}`;
+
+    // Calculate position relative to mouse
+    const offsetX = 15; // offset from cursor
+    const offsetY = 10;
+
+    // Ensure tooltip stays within viewport
+    const viewportWidth = window.innerWidth;
+    const tooltipWidth = 250; // max-width from the styles
+
+    // Adjust X position if it would go beyond right edge of viewport
+    let x = e.clientX + offsetX;
+    if (x + tooltipWidth > viewportWidth) {
+      x = e.clientX - tooltipWidth - offsetX;
+    }
+
+    setTooltipInfo({
+      visible: true,
+      content: description,
+      x: x,
+      y: e.clientY - offsetY,
+    });
+  };
+
+  const hideTooltip = () => {
+    setTooltipInfo({
+      ...tooltipInfo,
+      visible: false,
+    });
   };
 
   // filter skills based on activeCategory
@@ -126,7 +205,9 @@ export const SkillsSection = () => {
           {filteredSkills.map((skill) => (
             <div
               key={skill.name}
-              className="p-6 rounded-lg shadow-xs bg-card/50 backdrop-blur-lg card-hover"
+              className="relative p-6 rounded-lg shadow-xs bg-card/50 backdrop-blur-lg card-hover"
+              onMouseMove={(e) => showTooltip(e, skill.name)}
+              onMouseLeave={hideTooltip}
             >
               <div className="mb-4 text-left">
                 <h3 className="mb-2 font-semibold ">{skill.name}</h3>
@@ -166,6 +247,28 @@ export const SkillsSection = () => {
             </div>
           ))}
         </div>
+
+        {/* Floating tooltip that follows mouse position */}
+        {tooltipInfo.visible && (
+          <div
+            className="fixed z-50 px-4 py-3 text-sm font-medium border rounded-lg shadow-lg pointer-events-none bg-card/90 backdrop-blur-sm border-primary/30 text-foreground"
+            style={{
+              left: `${tooltipInfo.x}px`,
+              top: `${tooltipInfo.y}px`,
+              transform: "translate(0, -100%)",
+              maxWidth: "250px",
+              animation: "fadeIn 0.2s ease-out",
+              boxShadow:
+                "0 4px 12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05)",
+            }}
+          >
+            <div className="flex flex-col gap-1">
+              <div className="text-sm text-primary/80">About this skill:</div>
+              <div>{tooltipInfo.content}</div>
+            </div>
+            <div className="absolute bottom-0 w-3 h-3 rotate-45 -translate-x-1/2 translate-y-1/2 border-b border-r left-1/2 bg-card/90 border-primary/30" />
+          </div>
+        )}
       </div>
     </section>
   );
