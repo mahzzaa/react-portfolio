@@ -38,12 +38,12 @@ const projects = [
     demoUrl: "https://architecture-olive.vercel.app/",
   },
   {
-    // an education website for students and their family to get information about their school and teachers made by html , css , javascript
+    // A website that we made during our front-end course  made by html , css , javascript
 
     id: 3,
     name: "School Website",
     description:
-      "An informative school website for students and families to access news, schedules, and teacher profiles. Created with HTML, CSS, and JavaScript.",
+      "A website that we made during our front-end course  made by html , css , javascript with responsive design.",
     image: "/education.png",
     tags: ["HTML", "CSS", "JavaScript", "Animation"],
     githubUrl: "https://github.com/mahzzaa/educationWebsite",
