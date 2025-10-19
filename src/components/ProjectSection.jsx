@@ -60,6 +60,26 @@ const projects = [
     githubUrl: "https://github.com/mahzzaa/twoRobots",
     demoUrl: "https://two-robots.vercel.app/",
   },
+  {
+    id: 5,
+    name: "OpenPower Website",
+    description:
+      "Built a fast, responsive marketing site for Open Power (UK) using Svelte + Tailwind + Skeleton—clear value prop, clean UI, and lead-capture pages ready to scale.",
+    image: "/open-power.png",
+    tags: ["Svelte", "Skeleton", "Tailwind CSS"],
+    githubUrl: "",
+    demoUrl: "https://open-power.co.uk/",
+  },
+  {
+    id: 6,
+    name: "Tradle.online",
+    description:
+      "Built Tradle—a gamified web app for daily trading challenges using real market data and TradingView charts; users set entry/stop/target and simulate trades risk-free to build skills.",
+    image: "/tradle.png",
+    tags: ["Svelte", "Skeleton", "Tailwind CSS"],
+    githubUrl: "",
+    demoUrl: "",
+  },
 ];
 export const ProjectSection = () => {
   return (
