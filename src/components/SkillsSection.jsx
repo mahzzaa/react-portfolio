@@ -98,7 +98,6 @@ const skills = [
   { name: "GIMP", level: 70, category: "tools" },
   // 3d design
   { name: "Blender", level: 60, category: "tools" },
-  // {name: "Unity", level: 70, category: "tools" },
 ];
 
 const categories = [

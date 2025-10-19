@@ -49,11 +49,13 @@ export const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed w-full z-40 transition-all duration-300",
-        isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
+        "fixed top-0 left-0 z-40 w-full transition-all duration-300 backdrop-blur",
+        isScrolled
+          ? "py-3 bg-background/85 shadow-xs"
+          : "py-4 bg-background/65 border-b border-border/40"
       )}
     >
-      <div className="container flex items-center justify-between mx-auto ">
+      <div className="container flex items-center justify-between gap-4 px-4 mx-auto md:px-6">
         <a
           className="flex items-center text-xl font-bold text-primary"
           href="#home"
@@ -64,22 +66,25 @@ export const Navbar = () => {
           </span>
         </a>
         {/* desktop nav */}
-        <div className="hidden space-x-8 md:flex">
-          {navItems.map((item) => (
-            <a
-              className={cn(
-                "transition-colors duration-300 hover:text-primary",
-                activeSection === item.href.substring(1)
-                  ? "text-primary font-bold text-glow"
-                  : "text-foreground/80"
-              )}
-              key={item.name}
-              href={item.href}
-              onClick={() => trackEvent("nav_click", { section: item.name })}
-            >
-              {item.name}
-            </a>
-          ))}
+        <div className="items-center hidden gap-6 md:flex">
+          <div className="flex items-center gap-6">
+            {navItems.map((item) => (
+              <a
+                className={cn(
+                  "transition-colors duration-300 hover:text-primary",
+                  activeSection === item.href.substring(1)
+                    ? "text-primary font-bold text-glow"
+                    : "text-foreground/80"
+                )}
+                key={item.name}
+                href={item.href}
+                onClick={() => trackEvent("nav_click", { section: item.name })}
+              >
+                {item.name}
+              </a>
+            ))}
+          </div>
+          <ThemeToggle />
         </div>
         {/* mobile nav */}
         <button
@@ -103,7 +108,7 @@ export const Navbar = () => {
           >
             <X size={24} />
           </button>
-          <ThemeToggle />
+          <ThemeToggle className="md:hidden mb-12" />
 
           <div className="flex flex-col space-y-8 text-xl">
             {navItems.map((item) => (
