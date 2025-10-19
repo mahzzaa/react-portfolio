@@ -102,6 +102,22 @@ export const ProjectSection = () => {
             >
               <div className="relative w-full h-48 overflow-hidden transition-shadow duration-500 rounded-md shadow-lg group-hover:shadow-xl">
                 <div className="absolute inset-0 transition-opacity duration-500 opacity-0 bg-gradient-to-t from-black/50 to-transparent group-hover:opacity-100"></div>
+                <div className="absolute z-10 top-3 right-3">
+                  {project.demoUrl ? (
+                    <span className="flex items-center gap-1 px-2 py-1 text-[10px] font-semibold tracking-wide uppercase rounded-full bg-emerald-500/30 text-emerald-100 backdrop-blur shadow-[0_4px_12px_rgba(0,0,0,0.35)]">
+                      <span className="relative flex w-2 h-2">
+                        <span className="absolute inline-flex w-full h-full rounded-full opacity-75 bg-emerald-400 animate-ping"></span>
+                        <span className="relative inline-flex w-2 h-2 rounded-full bg-emerald-500"></span>
+                      </span>
+                      Live
+                    </span>
+                  ) : (
+                    <span className="flex items-center gap-1 px-2 py-1 text-[10px] font-semibold tracking-wide uppercase rounded-full bg-slate-900/40 text-slate-200/80 backdrop-blur shadow-[0_4px_12px_rgba(0,0,0,0.35)]">
+                      <span className="inline-flex w-2 h-2 rounded-full bg-slate-500"></span>
+                      Lunching
+                    </span>
+                  )}
+                </div>
                 <img
                   src={project.image}
                   alt={project.name}
@@ -114,7 +130,9 @@ export const ProjectSection = () => {
                     <span
                       key={index}
                       className="px-2 py-1 text-[10px] font-thin border rounded-full text-secondary-foreground bg-secondary border-secondary opacity-60"
-                      style={{ textShadow: "0 0 8px rgba(255, 255, 255, 0.8)" }}
+                      style={{
+                        textShadow: "0 0 8px rgba(255, 255, 255, 0.8)",
+                      }}
                     >
                       {tag}
                     </span>
@@ -150,20 +168,30 @@ export const ProjectSection = () => {
                         <p>GitHub</p>{" "}
                       </button>
                     )}
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center px-4 py-2 text-sm font-semibold rounded text-foreground bg-primary/40 hover:bg-primary/80"
-                      onClick={() =>
-                        trackEvent("project_demo_click", {
-                          project: project.name,
-                        })
-                      }
-                    >
-                      <ExternalLink className="inline-block w-4 h-4 mr-1" />
-                      <p>Live Preview</p>{" "}
-                    </a>
+                    {project.demoUrl ? (
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center px-4 py-2 text-sm font-semibold rounded text-foreground bg-primary/40 hover:bg-primary/80"
+                        onClick={() =>
+                          trackEvent("project_demo_click", {
+                            project: project.name,
+                          })
+                        }
+                      >
+                        <ExternalLink className="inline-block w-4 h-4 mr-1" />
+                        <p>Live Preview</p>
+                      </a>
+                    ) : (
+                      <button
+                        disabled
+                        className="flex items-center justify-center px-4 py-2 text-sm font-semibold rounded cursor-not-allowed text-foreground/50 bg-primary/40 opacity-80"
+                      >
+                        <ExternalLink className="inline-block w-4 h-4 mr-1" />
+                        <p>Live Preview</p>
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
