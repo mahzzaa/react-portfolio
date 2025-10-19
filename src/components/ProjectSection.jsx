@@ -2,8 +2,7 @@ import { ArrowRight, ExternalLink, GithubIcon } from "lucide-react";
 import { trackProjectView, trackEvent } from "../lib/analytics";
 
 const projects = [
-  // id, title,description,image ,tags[what it made with], github url, demo url
-  // a website for a vryptocurrency commiunity which name is "TheBirbNest" made by svelte , sveltekit , tailwindcss ,skeleton
+  // Carefully ordered: 1) BirbNest 2) Open Power 3) Tradle 4) Hollow Knight 5) Titanium Apple 6) Real Estate 7) Two Robots 8) School
   {
     id: 0,
     name: "The Birb Nest",
@@ -15,53 +14,7 @@ const projects = [
     demoUrl: "https://www.thebirbnest.com/",
   },
   {
-    // apple selling phone website, made with react , three js , tailwind css , gsap
     id: 1,
-    name: "Apple Store",
-    description:
-      "An immersive Apple product showcase with smooth 3D interactions and animations. Developed with React, Three.js, Tailwind CSS, and GSAP.",
-    image: "/apple.png",
-    tags: ["React", "Three.js", "Tailwind CSS", "GSAP"],
-    githubUrl: "https://github.com/mahzzaa/apple-website",
-    demoUrl: "https://apple-website-kappa-ten.vercel.app/",
-  },
-  {
-    //    a website for renting and buying houses , villas and apartments made by html , css , javascript , animation
-    id: 2,
-    name: "Real Estate",
-    description:
-      "A modern platform to browse, rent, and buy houses, villas, and apartments. Built with HTML, CSS, JavaScript, and animations.",
-
-    image: "/architecture.png",
-    tags: ["HTML", "CSS", "JavaScript", "Animation"],
-    githubUrl: "https://github.com/mahzzaa/architecture",
-    demoUrl: "https://architecture-olive.vercel.app/",
-  },
-  {
-    // A website that we made during our front-end course  made by html , css , javascript
-
-    id: 3,
-    name: "School Website",
-    description:
-      "A website that we made during our front-end course  made by html , css , javascript with responsive design.",
-    image: "/education.png",
-    tags: ["HTML", "CSS", "JavaScript", "Animation"],
-    githubUrl: "https://github.com/mahzzaa/educationWebsite",
-    demoUrl: "https://education-website-gules.vercel.app/",
-  },
-  {
-    //  a website for an startup company named"two Robots" made by html , css, tailwindcss , javascript
-    id: 4,
-    name: "Two Robots",
-    description:
-      "A clean and responsive website for the 'Two Robots' startup, designed with HTML, CSS, Tailwind CSS, and JavaScript.",
-    image: "/robots.png",
-    tags: ["HTML", "CSS", "Tailwind CSS", "JavaScript"],
-    githubUrl: "https://github.com/mahzzaa/twoRobots",
-    demoUrl: "https://two-robots.vercel.app/",
-  },
-  {
-    id: 5,
     name: "OpenPower Website",
     description:
       "Built a fast, responsive marketing site for Open Power (UK) using Svelte + Tailwind + Skeleton—clear value prop, clean UI, and lead-capture pages ready to scale.",
@@ -71,7 +24,7 @@ const projects = [
     demoUrl: "https://open-power.co.uk/",
   },
   {
-    id: 6,
+    id: 2,
     name: "Tradle.online",
     description:
       "Built Tradle—a gamified web app for daily trading challenges using real market data and TradingView charts; users set entry/stop/target and simulate trades risk-free to build skills.",
@@ -81,7 +34,7 @@ const projects = [
     demoUrl: "",
   },
   {
-    id: 7,
+    id: 3,
     name: "Hollow Knight",
     description:
       "A website inspired by the Hollow Knight game, built with React, Tailwind CSS, and GSAP for smooth animations and responsive design.",
@@ -89,6 +42,46 @@ const projects = [
     tags: ["React", "GSAP", "Tailwind CSS"],
     githubUrl: "https://github.com/mahzzaa/hollowKnight",
     demoUrl: "https://hollow-knight-theta.vercel.app/",
+  },
+  {
+    id: 4,
+    name: "Titanium Apple",
+    description:
+      "An immersive Apple product showcase with smooth 3D interactions and animations. Developed with React, Three.js, Tailwind CSS, and GSAP.",
+    image: "/apple.png",
+    tags: ["React", "Three.js", "Tailwind CSS", "GSAP"],
+    githubUrl: "https://github.com/mahzzaa/apple-website",
+    demoUrl: "https://apple-website-kappa-ten.vercel.app/",
+  },
+  {
+    id: 5,
+    name: "Real Estate",
+    description:
+      "A modern platform to browse, rent, and buy houses, villas, and apartments. Built with HTML, CSS, JavaScript, and animations.",
+    image: "/architecture.png",
+    tags: ["HTML", "CSS", "JavaScript", "Animation"],
+    githubUrl: "https://github.com/mahzzaa/architecture",
+    demoUrl: "https://architecture-olive.vercel.app/",
+  },
+  {
+    id: 6,
+    name: "Two Robots",
+    description:
+      "A clean and responsive website for the 'Two Robots' startup, designed with HTML, CSS, Tailwind CSS, and JavaScript.",
+    image: "/robots.png",
+    tags: ["HTML", "CSS", "Tailwind CSS", "JavaScript"],
+    githubUrl: "https://github.com/mahzzaa/twoRobots",
+    demoUrl: "https://two-robots.vercel.app/",
+  },
+  {
+    id: 7,
+    name: "School Website",
+    description:
+      "A website that we made during our front-end course made with HTML, CSS, and JavaScript, featuring a responsive layout.",
+    image: "/education.png",
+    tags: ["HTML", "CSS", "JavaScript", "Animation"],
+    githubUrl: "https://github.com/mahzzaa/educationWebsite",
+    demoUrl: "https://education-website-gules.vercel.app/",
   },
 ];
 export const ProjectSection = () => {
@@ -124,7 +117,7 @@ export const ProjectSection = () => {
                   ) : (
                     <span className="flex items-center gap-1 px-2 py-1 text-[10px] font-semibold tracking-wide uppercase rounded-full bg-slate-900/40 text-slate-200/80 backdrop-blur shadow-[0_4px_12px_rgba(0,0,0,0.35)]">
                       <span className="inline-flex w-2 h-2 rounded-full bg-slate-500"></span>
-                      Lunching
+                      Upcoming
                     </span>
                   )}
                 </div>
