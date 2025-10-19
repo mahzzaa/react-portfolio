@@ -59,7 +59,7 @@ const skills = [
   { name: "HTML", level: 100, category: "frontend" },
   { name: "CSS", level: 100, category: "frontend" },
   { name: "JavaScript", level: 90, category: "frontend" },
-  { name: "React", level: 75, category: "frontend" },
+  { name: "React", level: 90, category: "frontend" },
   // {name: "Next.js", level: 70, category: "frontend" },
   { name: "Bootstrap", level: 100, category: "frontend" },
   { name: "Sass", level: 95, category: "frontend" },
