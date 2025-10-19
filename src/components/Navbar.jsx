@@ -47,74 +47,88 @@ export const Navbar = () => {
   }, []);
 
   return (
-    <nav
-      className={cn(
-        "fixed top-0 left-0 z-40 w-full transition-all duration-300 backdrop-blur",
-        isScrolled
-          ? "py-3 bg-background/85 shadow-xs"
-          : "py-4 bg-background/65 border-b border-border/40"
-      )}
-    >
-      <div className="container flex items-center justify-between gap-4 px-4 mx-auto md:px-6">
-        <a
-          className="flex items-center text-xl font-bold text-primary"
-          href="#home"
-        >
-          <span className="relative z-10 `">
-            <span className="text-2xl text-foreground text-glow">My</span> {""}
-            <span className="text-2xl font-bold text-accent">Portfolio</span>
-          </span>
-        </a>
-        {/* desktop nav */}
-        <div className="items-center hidden gap-6 md:flex">
-          <div className="flex items-center gap-6">
-            {navItems.map((item) => (
-              <a
-                className={cn(
-                  "transition-colors duration-300 hover:text-primary",
-                  activeSection === item.href.substring(1)
-                    ? "text-primary font-bold text-glow"
-                    : "text-foreground/80"
-                )}
-                key={item.name}
-                href={item.href}
-                onClick={() => trackEvent("nav_click", { section: item.name })}
-              >
-                {item.name}
-              </a>
-            ))}
+    <>
+      <nav
+        className={cn(
+          "fixed top-0 left-0 z-40 w-full transition-all duration-300 backdrop-blur",
+          isScrolled
+            ? "py-3 bg-background/85 shadow-xs"
+            : "py-4 bg-background/65 border-b border-border/40"
+        )}
+      >
+        <div className="container flex items-center justify-between gap-4 px-4 mx-auto md:px-6">
+          <a
+            className="flex items-center text-xl font-bold text-primary"
+            href="#home"
+          >
+            <span className="relative z-10 `">
+              <span className="text-2xl text-foreground text-glow">My</span> {""}
+              <span className="text-2xl font-bold text-accent">Portfolio</span>
+            </span>
+          </a>
+          {/* desktop nav */}
+          <div className="items-center hidden gap-6 md:flex">
+            <div className="flex items-center gap-6">
+              {navItems.map((item) => (
+                <a
+                  className={cn(
+                    "transition-colors duration-300 hover:text-primary",
+                    activeSection === item.href.substring(1)
+                      ? "text-primary font-bold text-glow"
+                      : "text-foreground/80"
+                  )}
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => trackEvent("nav_click", { section: item.name })}
+                >
+                  {item.name}
+                </a>
+              ))}
+            </div>
+            <ThemeToggle />
           </div>
-          <ThemeToggle />
-        </div>
-        {/* mobile nav */}
-        <button
-          className="flex items-center justify-center p-2 transition-colors duration-300 rounded-md md:hidden text-foreground/80 hover:text-primary"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-        <div
-          className={cn(
-            "fixed inset-0 bg-background/70 backdrop-blur-md z-40 flex flex-col items-center justify-center",
-            "transition-all duration-300 md:hidden ",
-            isMenuOpen
-              ? "opacity-100 pointer-events-auto"
-              : "opacity-0 pointer-events-none"
-          )}
-        >
+          {/* mobile nav toggle button */}
           <button
-            className="absolute p-2 transition-colors duration-300 rounded-md top-5 right-5 text-foreground/80 hover:text-primary"
+            className="flex items-center justify-center p-2 transition-colors duration-300 rounded-md md:hidden text-foreground/80 hover:text-primary"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile nav overlay - moved outside of nav to properly fill screen */}
+      <div
+        className={cn(
+          "fixed inset-0 z-50 md:hidden",
+          "transition-all duration-300",
+          isMenuOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        )}
+      >
+        {/* Background overlay with blur */}
+        <div className="absolute inset-0 bg-background/80 backdrop-blur-lg" />
+
+        {/* Content container */}
+        <div className="relative flex flex-col items-center justify-center w-full h-full">
+          {/* Close button */}
+          <button
+            className="absolute top-4 right-4 p-2 transition-colors duration-300 rounded-md text-foreground/80 hover:text-primary"
             onClick={() => setIsMenuOpen(false)}
           >
-            <X size={24} />
+            <X size={28} />
           </button>
-          <ThemeToggle className="md:hidden mb-12" />
 
-          <div className="flex flex-col space-y-8 text-xl">
+          {/* Theme toggle */}
+          <ThemeToggle className="mb-12" />
+
+          {/* Navigation items */}
+          <div className="flex flex-col items-center space-y-6 text-2xl">
             {navItems.map((item) => (
               <a
                 className={cn(
-                  "transition-colors duration-300 hover:text-primary",
+                  "transition-colors duration-300 hover:text-primary text-center",
                   activeSection === item.href.substring(1)
                     ? "text-primary font-bold text-glow"
                     : "text-foreground/80"
@@ -132,6 +146,6 @@ export const Navbar = () => {
           </div>
         </div>
       </div>
-    </nav>
+    </>
   );
 };
