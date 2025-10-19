@@ -66,7 +66,6 @@ export const Navbar = () => {
               <span className="text-2xl font-bold text-accent">Portfolio</span>
             </span>
           </a>
-          {/* desktop nav */}
           <div className="items-center hidden gap-6 md:flex">
             <div className="flex items-center gap-6">
               {navItems.map((item) => (
@@ -87,7 +86,6 @@ export const Navbar = () => {
             </div>
             <ThemeToggle />
           </div>
-          {/* mobile nav toggle button */}
           <button
             className="flex items-center justify-center p-2 transition-colors duration-300 rounded-md md:hidden text-foreground/80 hover:text-primary"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -97,7 +95,6 @@ export const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile nav overlay - moved outside of nav to properly fill screen */}
       <div
         className={cn(
           "fixed inset-0 z-50 md:hidden",
@@ -107,12 +104,9 @@ export const Navbar = () => {
             : "opacity-0 pointer-events-none"
         )}
       >
-        {/* Background overlay with blur */}
         <div className="absolute inset-0 bg-background/80 backdrop-blur-lg" />
 
-        {/* Content container */}
         <div className="relative flex flex-col items-center justify-center w-full h-full">
-          {/* Close button */}
           <button
             className="absolute top-4 right-4 p-2 transition-colors duration-300 rounded-md text-foreground/80 hover:text-primary"
             onClick={() => setIsMenuOpen(false)}
@@ -120,10 +114,8 @@ export const Navbar = () => {
             <X size={28} />
           </button>
 
-          {/* Theme toggle */}
           <ThemeToggle className="mb-12" />
 
-          {/* Navigation items */}
           <div className="flex flex-col items-center space-y-6 text-2xl">
             {navItems.map((item) => (
               <a
