@@ -80,6 +80,16 @@ const projects = [
     githubUrl: "",
     demoUrl: "",
   },
+  {
+    id: 7,
+    name: "Hollow Knight",
+    description:
+      "A website inspired by the Hollow Knight game, built with React, Tailwind CSS, and GSAP for smooth animations and responsive design.",
+    image: "/hollowKnight.jpeg",
+    tags: ["React", "GSAP", "Tailwind CSS"],
+    githubUrl: "https://github.com/mahzzaa/hollowKnight",
+    demoUrl: "https://hollow-knight-theta.vercel.app/",
+  },
 ];
 export const ProjectSection = () => {
   return (
